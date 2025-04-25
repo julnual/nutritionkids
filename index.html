@@ -1,70 +1,70 @@
-!DOCTYPE html
-html lang=th
-head
-  meta charset=UTF-8
-  titleรายชื่อผู้ป่วยtitle
-  style
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>รายชื่อผู้ป่วย</title>
+  <style>
     body {
-      font-family 'Segoe UI', sans-serif;
-      padding 20px;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
     }
     table {
-      width 100%;
-      border-collapse collapse;
-      margin-top 20px;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
     }
     th, td {
-      border 1px solid #ccc;
-      padding 10px;
-      text-align center;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
     }
     th {
-      background-color #f0f0f0;
+      background-color: #f0f0f0;
     }
     button {
-      background-color #2196f3;
-      color white;
-      border none;
-      padding 6px 12px;
-      border-radius 6px;
-      cursor pointer;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
     }
-  style
-head
-body
-  h2รายชื่อผู้ป่วยh2
-  table
-    thead
-      tr
-        thชื่อth
-        thHNth
-        thประเมินth
-      tr
-    thead
-    tbody id=tableBodytbody
-  table
+  </style>
+</head>
+<body>
+  <h2>รายชื่อผู้ป่วย</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ชื่อ</th>
+        <th>HN</th>
+        <th>ประเมิน</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
 
-  script
-    const sheetURL = httpsscript.google.commacrossAKfycby9Zt4vZrTCHvNoKAeHV3_YMhsfN0-PY9NxdwMA-ZMYexec;
+  <script>
+    const sheetURL = "https://script.google.com/macros/s/AKfycby9Zt4vZrTCHvNoKAeHV3_YMhsfN0-PY9NxdwMA-ZMY/exec";
 
     fetch(sheetURL)
-      .then(res = res.json())
-      .then(data = {
-        const tbody = document.getElementById(tableBody);
-        data.forEach(row = {
-          const tr = document.createElement(tr);
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("tableBody");
+        data.forEach(row => {
+          const tr = document.createElement("tr");
           tr.innerHTML = `
-            td${row[ชื่อ]  }td
-            td${row[HN]  }td
-            td
-              a href=quiz.htmlname=${encodeURIComponent(row[ชื่อ])}&hn=${encodeURIComponent(row[HN])}
-                buttonประเมินbutton
-              a
-            td
+            <td>${row["ชื่อ"] || ""}</td>
+            <td>${row["HN"] || ""}</td>
+            <td>
+              <a href="quiz.html?name=${encodeURIComponent(row["ชื่อ"])}&hn=${encodeURIComponent(row["HN"])}">
+                <button>ประเมิน</button>
+              </a>
+            </td>
           `;
           tbody.appendChild(tr);
         });
       });
-  script
-body
-html
+  </script>
+</body>
+</html>
