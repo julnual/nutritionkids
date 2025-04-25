@@ -45,26 +45,27 @@
   </table>
 
   <script>
-    const sheetURL = "https://script.google.com/macros/s/AKfycbyvgq-Yl7AuGhsjLAxNXN_FCzW0mrGVtNixemxtyEgPNKrT9HmgcBOnePTWBxL6yjCqtQ/exec";
+    const sheetURL = "https://script.google.com/macros/s/AKfycbzxSo0zQZVMuRs5KP_YMJdggiDWIJSoJzVwbOLKBBY9XcDMiUQWLUi90kMnTxM1znpxPw/exec"; 
+fetch(sheetURL)
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("tableBody");
+    data.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${row["ชื่อ"] || "-"}</td>
+        <td>${row["HN"] || "-"}</td>
+        <td>
+          <a href="quiz.html?name=${encodeURIComponent(row["ชื่อ"])}&hn=${encodeURIComponent(row["HN"])}">
+            <button>ประเมิน</button>
+          </a>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(err => console.error("ดึงข้อมูลไม่สำเร็จ:", err));
 
-    fetch(sheetURL)
-      .then(res => res.json())
-      .then(data => {
-        const tbody = document.getElementById("tableBody");
-        data.forEach(row => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${row["hospcode"] || ""}</td>
-            <td>${row["an"] || ""}</td>
-            <td>
-              <a href="quiz.html?name=${encodeURIComponent(row["ชื่อ"])}&hn=${encodeURIComponent(row["HN"])}">
-                <button>ประเมิน</button>
-              </a>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      });
   </script>
 </body>
 </html>
