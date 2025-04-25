@@ -54,8 +54,8 @@
         data.forEach(row => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-            <td>${row["ชื่อ"] || ""}</td>
-            <td>${row["HN"] || ""}</td>
+            <td>${row["hospcode"] || ""}</td>
+            <td>${row["an"] || ""}</td>
             <td>
               <a href="quiz.html?name=${encodeURIComponent(row["ชื่อ"])}&hn=${encodeURIComponent(row["HN"])}">
                 <button>ประเมิน</button>
