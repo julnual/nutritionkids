@@ -13,8 +13,8 @@
     <table id="patientTable">
       <thead>
         <tr>
+          <th>AN</th>
           <th>ชื่อผู้ป่วย</th>
-          <th>HN</th>
           <th>ประเมิน</th>
         </tr>
       </thead>
@@ -31,8 +31,8 @@
         data.forEach(row => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-            <td>${row["ชื่อผู้ป่วย"] || "-"}</td>
-            <td>${row["HN"] || "-"}</td>
+            <td>${row["an"] || "-"}</td>
+            <td>${row["name"] || "-"}</td>
             <td><a href="quiz.html?name=${encodeURIComponent(row["ชื่อผู้ป่วย"])}&hn=${encodeURIComponent(row["HN"])}">
               <button>ประเมิน</button></a></td>
           `;
@@ -40,7 +40,7 @@
         });
       });
 =======
-    const sheetURL = "https://script.google.com/macros/s/AKfycbzxSo0zQZVMuRs5KP_YMJdggiDWIJSoJzVwbOLKBBY9XcDMiUQWLUi90kMnTxM1znpxPw/exec"; 
+    const sheetURL = "https://script.google.com/macros/s/AKfycbzxSo0zQZVMuRs5KP_YMJdggiDWIJSoJzVwbOLKBBY9XcDMiUQWLUi90kMnTxM1znpxPw/exec";
 fetch(sheetURL)
   .then(res => res.json())
   .then(data => {
@@ -48,8 +48,8 @@ fetch(sheetURL)
     data.forEach(row => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td>${row["ชื่อ"] || "-"}</td>
-        <td>${row["HN"] || "-"}</td>
+       <td>${row["an"] || "-"}</td>
+       <td>${row["name"] || "-"}</td>
         <td>
           <a href="quiz.html?name=${encodeURIComponent(row["ชื่อ"])}&hn=${encodeURIComponent(row["HN"])}">
             <button>ประเมิน</button>
