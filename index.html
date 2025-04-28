@@ -22,7 +22,6 @@
     </table>
   </div>
   <script>
-<<<<<<< HEAD
     const sheetURL = "https://script.google.com/macros/s/AKfycbyvgq-Yl7AuGhsjLAxNXN_FCzW0mrGVtNixemxtyEgPNKrT9HmgcBOnePTWBxL6yjCqtQ/exec";
     fetch(sheetURL)
       .then(res => res.json())
@@ -31,14 +30,20 @@
         data.forEach(row => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
+<<<<<<< HEAD
             <td>${row["an"] || "-"}</td>
             <td>${row["name"] || "-"}</td>
+=======
+            <td>${row["name"] || "-"}</td>
+            <td>${row["hn"] || "-"}</td>
+>>>>>>> 3adbe689cc9fc2355991739ffd1762f000b3000a
             <td><a href="quiz.html?name=${encodeURIComponent(row["ชื่อผู้ป่วย"])}&hn=${encodeURIComponent(row["HN"])}">
               <button>ประเมิน</button></a></td>
           `;
           tbody.appendChild(tr);
         });
       });
+<<<<<<< HEAD
 =======
     const sheetURL = "https://script.google.com/macros/s/AKfycbzxSo0zQZVMuRs5KP_YMJdggiDWIJSoJzVwbOLKBBY9XcDMiUQWLUi90kMnTxM1znpxPw/exec";
 fetch(sheetURL)
@@ -62,6 +67,8 @@ fetch(sheetURL)
   .catch(err => console.error("ดึงข้อมูลไม่สำเร็จ:", err));
 
 >>>>>>> be901eaf7c8a5788e11c86d1be0ce9710abf4da4
+=======
+>>>>>>> 3adbe689cc9fc2355991739ffd1762f000b3000a
   </script>
 </body>
 </html>
