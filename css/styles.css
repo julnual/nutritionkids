@@ -1,22 +1,26 @@
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f9f9f9;
-  margin: 0;
-  padding: 20px;
+  padding: 30px;
 }
-.container {
-  max-width: 800px;
+.quiz-container, .container {
+  max-width: 650px;
   margin: auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+.question, table {
+  margin-bottom: 20px;
 }
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 th, td {
   border: 1px solid #ccc;
@@ -27,18 +31,45 @@ th {
   background-color: #f0f0f0;
 }
 button {
-  background-color: #2196f3;
+  background-color: #00acc1;
   color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
 }
 button:hover {
-  background-color: #1976d2;
+  background-color: #008b9a;
+}
+.result {
+  margin-top: 30px;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  display: none;
+}
+.low-risk {
+  background: #e8f5e9;
+  border-left: 6px solid #43a047;
+  color: #2e7d32;
+}
+.medium-risk {
+  background: #fff8e1;
+  border-left: 6px solid #ffb300;
+  color: #ef6c00;
+}
+.high-risk {
+  background: #ffebee;
+  border-left: 6px solid #e53935;
+  color: #b71c1c;
+}
+.recommendation {
+  margin-top: 10px;
+  font-style: italic;
 }
 @media (max-width: 600px) {
-  body, .container {
+  body, .container, .quiz-container {
     padding: 10px;
   }
   table, thead, tbody, th, td, tr {
