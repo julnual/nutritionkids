@@ -31,7 +31,7 @@
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td>${row["name"] || "-"}</td>
-            <td>${row["HN"] || "-"}</td>
+            <td>${row["hn"] || "-"}</td>
             <td><a href="quiz.html?name=${encodeURIComponent(row["ชื่อผู้ป่วย"])}&hn=${encodeURIComponent(row["HN"])}">
               <button>ประเมิน</button></a></td>
           `;
