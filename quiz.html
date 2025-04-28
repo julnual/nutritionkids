@@ -2,6 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>แบบประเมินความเสี่ยง</title>
   <style>
     body {
@@ -23,10 +24,6 @@
     }
     .question {
       margin-bottom: 20px;
-    }
-    .question p {
-      font-weight: bold;
-      margin-bottom: 8px;
     }
     .result {
       margin-top: 30px;
@@ -73,7 +70,6 @@
     <h2 id="quizTitle">แบบประเมินความเสี่ยง</h2>
     <form id="quizForm">
 
-      <!-- คำถาม -->
       <div class="question">
         <p>1. ผู้ป่วยมีภาวะทุพโภชนาการหรือไม่?</p>
         <label><input type="radio" name="q1" value="a"> ใช่ (0 คะแนน)</label><br>
@@ -105,17 +101,19 @@
   </div>
 
   <script>
-    // URL Params
+    // ดึงข้อมูลจาก URL
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get("name");
     const hn = urlParams.get("hn");
 
-    // แสดงชื่อในหัวข้อ
+    console.log("ชื่อ:", name);
+    console.log("HN:", hn);
+
     if (name) {
       document.getElementById("quizTitle").textContent += ` - คุณ ${name}`;
     }
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyvgq-Yl7AuGhsjLAxNXN_FCzW0mrGVtNixemxtyEgPNKrT9HmgcBOnePTWBxL6yjCqtQ/exec";
+    const scriptURL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLglyKXleYV7xoQG0daZIK_AHCl-_bjmyGCU7eEEqBGaKYa3_ypm5Zrx0WY5yMzuaukiIwHmdMrGd482HYDn2FNGWSY_qQcGh7evOAcsE_m7Mn043h5ywfnH6fs18bfeeUBAdu6hW4gml6BSD1Oea4xuJpI1wIQl3uR1xTrMuUBJ6j2i_qqsPYzh974X_VAROXPEY5BWItXaNWnjfd6-qMOkIwzG9_Y1-2jiIXJb_6-GMNCntepNf_Dndc2qPUWkThURJONNmcdsH0s1OxzgAfGjIHEgzhoQMAZG91s4&lib=MyHr3CPImKpOGbA8w0JmCo9kcHQ6lO-wB";
 
     document.getElementById("quizForm").addEventListener("submit", function(event) {
       event.preventDefault();
@@ -135,7 +133,6 @@
         }
       });
 
-      // คำแนะนำตามคะแนน
       let recommendation = "";
       let riskClass = "";
       if (score === 0) {
@@ -149,7 +146,6 @@
         riskClass = "high-risk";
       }
 
-      // แสดงผล
       const resultBox = document.getElementById("result");
       resultBox.className = `result ${riskClass}`;
       resultBox.innerHTML = `
@@ -158,7 +154,7 @@
       `;
       resultBox.style.display = "block";
 
-      // บันทึกลง Google Sheets
+      // ส่งข้อมูลไป Google Sheets
       fetch(scriptURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
