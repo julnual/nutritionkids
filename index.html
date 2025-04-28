@@ -13,8 +13,8 @@
     <table id="patientTable">
       <thead>
         <tr>
-          <th>AN</th>
           <th>ชื่อผู้ป่วย</th>
+          <th>HN</th>
           <th>ประเมิน</th>
         </tr>
       </thead>
@@ -30,45 +30,14 @@
         data.forEach(row => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-<<<<<<< HEAD
-            <td>${row["an"] || "-"}</td>
-            <td>${row["name"] || "-"}</td>
-=======
             <td>${row["name"] || "-"}</td>
             <td>${row["hn"] || "-"}</td>
->>>>>>> 3adbe689cc9fc2355991739ffd1762f000b3000a
             <td><a href="quiz.html?name=${encodeURIComponent(row["ชื่อผู้ป่วย"])}&hn=${encodeURIComponent(row["HN"])}">
               <button>ประเมิน</button></a></td>
           `;
           tbody.appendChild(tr);
         });
       });
-<<<<<<< HEAD
-=======
-    const sheetURL = "https://script.google.com/macros/s/AKfycbzxSo0zQZVMuRs5KP_YMJdggiDWIJSoJzVwbOLKBBY9XcDMiUQWLUi90kMnTxM1znpxPw/exec";
-fetch(sheetURL)
-  .then(res => res.json())
-  .then(data => {
-    const tbody = document.getElementById("tableBody");
-    data.forEach(row => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-       <td>${row["an"] || "-"}</td>
-       <td>${row["name"] || "-"}</td>
-        <td>
-          <a href="quiz.html?name=${encodeURIComponent(row["ชื่อ"])}&hn=${encodeURIComponent(row["HN"])}">
-            <button>ประเมิน</button>
-          </a>
-        </td>
-      `;
-      tbody.appendChild(tr);
-    });
-  })
-  .catch(err => console.error("ดึงข้อมูลไม่สำเร็จ:", err));
-
->>>>>>> be901eaf7c8a5788e11c86d1be0ce9710abf4da4
-=======
->>>>>>> 3adbe689cc9fc2355991739ffd1762f000b3000a
   </script>
 </body>
 </html>
